@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&amp;family=Space+Mono:wght@400;700&amp;family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&amp;family=Squada+One&amp;display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#F6F8EC;}
+  ::selection{background:#9EE3B2;color:#1B1008;}
+  @keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(46px,-34px) scale(1.14)}}
+  @keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-54px,32px) scale(1.1)}}
+  @keyframes float3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(34px,44px) scale(0.94)}}
+  @keyframes float4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-32px,-44px) scale(1.16)}}
+  @keyframes pulsering{0%{transform:scale(0.6);opacity:.85}75%{transform:scale(2.1);opacity:0}100%{opacity:0}}
+  @keyframes sheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes fadein{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+  .cpf-preview .cpf-overlay{transition:background-color .25s ease;}
+  .cpf-preview:hover .cpf-overlay{background-color:rgba(13,22,15,0.22) !important;}
+  @keyframes wave{0%,100%{transform:rotate(0deg)}20%{transform:rotate(20deg)}40%{transform:rotate(-8deg)}60%{transform:rotate(20deg)}80%{transform:rotate(-4deg)}}
+  @keyframes popin{0%{transform:translateY(24px) scale(.985);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+</style>
+</helmet>
+
+<div style="font-family:'Merriweather',serif;color:#1B1008;background:#F6F8EC;overflow-x:hidden;">
+
+  <!-- NAV -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 10px clamp(20px,5vw,56px); background: rgba(246,248,236,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 1px 24px rgba(27,16,8,0.08)">
+    <a href="#top" style="font-family:'Zilla Slab',serif;font-weight:700;font-size:28px;letter-spacing:2px;color:#1E4D2B;text-decoration:none;">HEERA</a>
+    <div style="display:flex;gap:clamp(16px,2.5vw,34px);align-items:center;font-family:'Space Mono',monospace;font-size:13px;">
+      <a href="#about" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">About</a>
+      <a href="#projects" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Projects</a>
+      <a href="#contact" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Contact</a>
+      <a href="uploads/Suheera_Banu_Resume.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1E4D2B;color:#F6F8EC;text-decoration:none;border-radius:40px;padding:8px 18px;font-size:13px;" style-hover="background:#16381F;">Resume ↗</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div id="top" style="position: relative; overflow: hidden; min-height: auto; display: flex; flex-direction: column; justify-content: center; padding: 200px 0 200px; background: radial-gradient(ellipse at 15% 60%, rgba(205,255,219,0.7) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(158,227,178,0.5) 0%, transparent 50%), #F6F8EC; height: 402px">
+    <div id="heera-blobs" style="position:absolute;inset:-12%;z-index:0;pointer-events:none;transition:transform .35s ease-out;">
+      <div style="position:absolute;top:-2%;left:6%;width:min(70vw,680px);height:min(70vw,680px);border-radius:50%;background:radial-gradient(circle at 50% 50%, #CDFFDB 0%, rgba(205,255,219,0) 68%);filter:blur(28px);animation:{{ blobA }};"></div>
+      <div style="position: absolute; top: 113px; width: min(72vw,720px); height: min(72vw,720px); border-radius: 50%; background: radial-gradient(circle at 50% 50%, #9EE3B2 0%, rgba(158,227,178,0) 66%); filter: blur(32px); animation: {{ blobB }}; left: 741px"></div>
+      
+      <div style="position:absolute;top:26%;left:40%;width:min(44vw,440px);height:min(44vw,440px);border-radius:50%;background:radial-gradient(circle at 50% 50%, #D9F8C4 0%, rgba(215,254,196,0) 66%);filter:blur(30px);animation:{{ blobD }};"></div>
+    </div>
+    
+    <div style="position: relative; z-index: 1; width: 1201px; max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; animation: fadein .9s ease both; top: -17px; height: 347px; left: -49px">
+      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border-radius:40px;padding:7px 18px;border:1px solid rgba(30,77,43,0.18);">
+        <span style="width:8px;height:8px;border-radius:50%;background:#1E4D2B;display:block;box-shadow:0 0 0 0 rgba(30,77,43,0.5);animation:pulsering 2.4s ease-out infinite;"></span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;color:#1E4D2B;">Available from Aug 2026</span>
+      </div>
+      <span style="font-family:'Space Mono',monospace;font-size:clamp(11px,1vw,13px);letter-spacing:4px;color:#56675B;">UI/UX DESIGNER IN THE MAKING</span>
+      <h1 style="margin: 0; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: clamp(52px,9vw,128px); line-height: 0.96; color: #1B1008; width: 1002px; height: 105px">Hi, I am <span style="color: rgb(30, 77, 43);">Heera !</span></h1>
+      <p style="margin: 0; font-family: 'Space Mono',monospace; font-size: clamp(13px,1.2vw,16px); color: #3a3228; line-height: 1.65; max-width: 600px; padding-top: 13px; padding-bottom: 13px">Welcome to my portfolio, a place where I showcase my latest work and document my journey in human-centered design.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; padding-top: 0px; padding-bottom: 0px">
+        <a href="#projects" style="background: #1E4D2B; color: #F6F8EC; text-decoration: none; border-radius: 44px; padding: 12px 28px; font-size: 13px; box-shadow: 0 8px 22px rgba(30,77,43,0.28)" style-hover="background:#16381F;transform:translateY(-2px);">View my work</a>
+        <a href="#about" style="background: rgba(255,255,255,0.6); color: #1E4D2B; text-decoration: none; border: 1.5px solid #1E4D2B; border-radius: 44px; padding: 12px 28px; font-size: 13px" style-hover="background:#1E4D2B;color:#F6F8EC;">About me</a>
+      </div>
+    </div>
+    
+  <div style="position: absolute; bottom: -8%; left: 24%; width: min(54vw,540px); height: min(54vw,540px); border-radius: 50%; background: radial-gradient(circle at 50% 50%, #BFE6C9 0%, rgba(191,220,199,0) 66%); filter: blur(30px); animation: {{ blobC }}; z-index: 0; pointer-events: none"></div></div>
+
+  <!-- ABOUT -->
+  <div id="about" style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(20px,5vw,48px) 20px; scroll-margin-top: 64px; padding-top: 0px">
+    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 42px">
+      <span style="font-family:'Squada One',sans-serif;font-size:clamp(24px,3vw,36px);letter-spacing:6px;color:#1E4D2B;line-height:1;">ABOUT ME</span>
+      <span style="flex:1;height:1px;background:rgba(30,77,43,0.3);"></span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:clamp(20px,4vw,48px);align-items:center;">
+      <div style="justify-self:center;position:relative;">
+        <div style="position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #CDFFDB, #9EE3B2); filter: blur(8px); opacity: 0.28"></div>
+        <img src="assets/profile.jpg" alt="Suheera Banu" style="position: relative; width: clamp(150px,16vw,210px); height: clamp(150px,16vw,210px); border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 5px solid #F6F8EC; border-color: #fdfff5">
+      </div>
+      <div>
+        <p style="margin:0 0 22px;font-size:clamp(16px,1.6vw,20px);line-height:1.5;font-weight:300;">Hi! I'm Heera, an aspiring <strong style="font-weight: 700; color: rgb(30, 77, 43);">UI/UX designer&nbsp;</strong>with a strong passion for designing intuitive and accessible technology.</p>
+        <p style="margin: 0; font-size: 16px; line-height: 1.75; color: #3a3228; font-style: italic">As a Design &amp; Artificial Intelligence Undergrad at SUTD, I get to seamlessly blend my love for tech with my creative side. Currently, I am working on bridging the gap between AI and UX while constantly refining my technical toolkit.</p><p style="margin: 0; font-size: 16px; line-height: 1.75; color: #3a3228; font-style: italic">I am just as much of a maker beyond the screen. When I am not designing in Figma, I am still always creating something new,&nbsp; from painting to sewing my own clothes!</p>
+      </div>
+    </div>
+
+    <!-- education -->
+    
+
+    <!-- skills -->
+    <div style="margin-top: 36px; background: #BFDCC7; border-radius: 22px; padding: clamp(10px,2.5vw,28px); display: flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;">
+        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(18px,1.8vw,22px);line-height:1.12;color:#1B1008;">Bachelor of Science in Design &amp; Artificial Intelligence (DAI)</div>
+        <span style="font-family:'Space Mono',monospace;font-size:14px;color:#1E4D2B;white-space:nowrap;flex-shrink:0;">2024 — 2028</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+        <span style="font-size:14px;color:#2b3a2f;">Singapore University of Technology &amp; Design</span>
+        <span style="background:#F6F8EC;border-radius:40px;padding:4px 12px;font-size:12px;font-style:italic;">GPA 4.4 / 5.0</span>
+        <span style="background:#F6F8EC;border-radius:40px;padding:4px 12px;font-size:12px;font-style:italic;">Shopee–SUTD Scholarship</span>
+      </div>
+    </div><div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 14px; margin-right: -242px">
+      <div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06); width: 625px; height: 71px">
+        <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:12px;color:#1B1008;">DESIGN &amp; 3D</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/figma.png" style="width:18px;height:18px;object-fit:contain;">Figma</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/illustrator.png" style="width:18px;height:18px;object-fit:contain;">Illustrator</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/photoshop.png" style="width:18px;height:18px;object-fit:contain;">Photoshop</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/fusion.png" style="width:18px;height:18px;object-fit:contain;">Fusion 360</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/blender.png" style="width:18px;height:18px;object-fit:contain;">Blender</span>
+        </div>
+      </div><div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06); width: 377px; height: 71px">
+        <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:12px;color:#1B1008;">LANGUAGES</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid rgba(30,77,43,0.3); border-radius: 40px; padding: 6px 14px; font-size: 13px" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/python.png" style="width:18px;height:18px;object-fit:contain;">Python</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid rgba(30,77,43,0.3); border-radius: 40px; padding: 6px 14px; font-size: 13px" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/html.png" style="width:18px;height:18px;object-fit:contain;">HTML / CSS</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid rgba(30,77,43,0.3); border-radius: 40px; padding: 6px 14px; font-size: 13px" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/js.png" style="width:18px;height:18px;object-fit:contain;">JavaScript</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- PROJECTS -->
+  <div id="projects" style="max-width:1200px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 20px;scroll-margin-top:64px;">
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:14px;">
+      <span style="font-family:'Squada One',sans-serif;font-size:clamp(24px,3vw,36px);letter-spacing:6px;color:#1E4D2B;line-height:1;">PROJECTS</span>
+      <span style="flex:1;height:1px;background:rgba(30,77,43,0.3);"></span>
+    </div>
+    <p style="margin: 0 0 40px; font-family: 'Space Mono',monospace; font-size: 15px; color: #3a3228; margin-bottom: 42px">A few things I've been building — tap any card to dive in.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+      <!-- Tuckr -->
+      <div onClick="{{ openTuckr }}" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 28px rgba(27,16,8,0.10);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(27,16,8,0.18);">
+        <div style="position:relative;height:190px;background:#e9ece1;">
+          <img src="assets/tuckr_top_s.png" alt="Tuckr" style="width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block;">
+          <span style="position: absolute; top: 14px; right: 14px; border: 1px solid #E3EBE1; border-radius: 40px; padding: 6px 14px; font-family: 'Space Mono',monospace; font-size: 12px; color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.12); background-color: #1e4d2b">Completed</span>
+        </div>
+        <div style="padding:16px;">
+          <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;line-height:1;margin-bottom:6px;">Tuckr</div>
+          <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#3a3228;">A human-first cobotic assistant for hotel bed-making.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Product Design</span>
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Hardware</span>
+          </div>
+        </div>
+      </div>
+      <!-- CPF -->
+      <div onClick="{{ openCpf }}" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 28px rgba(27,16,8,0.10);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(27,16,8,0.18);">
+        <div style="position:relative;height:190px;background:#1E4D2B;">
+          <img src="assets/cpf_cover.png" alt="CPF dashboard" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;">
+          <span style="position: absolute; top: 14px; right: 14px; border: 1px solid #E3EBE1; border-radius: 40px; padding: 6px 14px; font-family: 'Space Mono',monospace; font-size: 12px; color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.12); background-color: #1e4d2b">Ongoing</span>
+        </div>
+        <div style="padding:16px;">
+          <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;line-height:1;margin-bottom:6px;">Correspondence Redesign</div>
+          <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#3a3228;">An inclusive digital correspondence service for CPF.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Service Design</span>
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Frontend</span>
+          </div>
+        </div>
+      </div>
+      <!-- Dosewise -->
+      <div onClick="{{ openDose }}" style="background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 28px rgba(27,16,8,0.10);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px rgba(27,16,8,0.18);">
+        <div style="position:relative;height:190px;background:#F6F8EC;">
+          <img src="assets/dosewise_cover.png" alt="Dosewise" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;">
+          <span style="position: absolute; top: 14px; right: 14px; border: 1px solid #E3EBE1; border-radius: 40px; padding: 6px 14px; font-family: 'Space Mono',monospace; font-size: 12px; color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.12); background-color: #1e4d2b">Ongoing</span>
+          
+        </div>
+        <div style="padding:16px;">
+          <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:20px;line-height:1;margin-bottom:6px;">Dosewise</div>
+          <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#3a3228;">An AI-powered prescription assistant for health literacy.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">HCI</span>
+            <span style="background:#EFF4EE;border-radius:40px;padding:5px 13px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UI/UX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><div id="contact" style="max-width:1200px;margin:0 auto;padding:80px clamp(20px,5vw,48px) 20px;scroll-margin-top:64px;color:#1B1008;">
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:14px;">
+      <span style="font-family:'Squada One',sans-serif;font-size:clamp(24px,3vw,36px);letter-spacing:6px;color:#1E4D2B;line-height:1;">CONTACT</span>
+      <span style="flex:1;height:1px;background:rgba(30,77,43,0.3);"></span>
+    </div>
+      
+      <div style="box-sizing: border-box; gap: 12px"><h2 style="margin: 0; text-align: center; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: 60px; line-height: 1.6; color: #1B1008">Let's work together!</h2>
+      
+      <div style="max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px">
+        <a href="/cdn-cgi/l/email-protection#493a3c212c2c3b287978092e24282025672a2624" style="display:flex;align-items:center;gap:12px;border:1.4px solid rgba(30,77,43,0.3);border-radius:10px;padding:10px 16px;color:#1B1008;text-decoration:none;font-size:14px;transition:all .2s ease;" style-hover="background:#1E4D2B;color:#F6F8EC;border-color:#1E4D2B;">
+          <span style="font-size:15px;">✉</span> <span class="__cf_email__" data-cfemail="394a4c515c5c4b580908795e54585055175a5654">[email&#160;protected]</span>
+        </a>
+        <a href="https://linkedin.com/in/suheera-banu" target="_blank" style="display:flex;align-items:center;gap:12px;border:1.4px solid rgba(30,77,43,0.3);border-radius:10px;padding:10px 16px;color:#1B1008;text-decoration:none;font-size:14px;transition:all .2s ease;" style-hover="background:#1E4D2B;color:#F6F8EC;border-color:#1E4D2B;">
+          <span style="font-size:14px;font-weight:700;">in</span> linkedin.com/in/suheera-banu
+        </a>
+        <a href="uploads/Suheera_Banu_Resume.pdf" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#1E4D2B;color:#F6F8EC;border-radius:10px;padding:10px 16px;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;margin-top:2px;" style-hover="background:#16381F;">Download my resume ↗</a>
+      </div></div>
+      <div style="display:flex;justify-content:center;margin:18px 0 28px;">
+        
+      </div>
+      </div>
+      
+      <div style="text-align:center;margin-top:36px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:rgba(27,16,8,0.35);">Designed &amp; built by Suheera Banu · 2026</div>
+    
+  </div>
+
+
+  <!-- CONTACT -->
+  
+
+  <!-- ============ POPUPS ============ -->
+  <sc-if value="{{ anyPopup }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:rgba(20,24,18,0.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:clamp(16px,4vw,52px) 16px;">
+      <button onClick="{{ close }}" style="position:fixed;inset:0;background:transparent;border:0;cursor:pointer;z-index:0;"></button>
+
+      <!-- ===== TUCKR ===== -->
+      <sc-if value="{{ isTuckr }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
+          <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
+          <div style="padding:clamp(28px,5vw,56px);">
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Tuckr</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Product Design</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UX Research</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">3D Modelling</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Hardware Prototyping</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">Jan – Apr 2026</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.003 Product Design Studio</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Blender, Fusion 360, Canva</div></div>
+            </div>
+            <p style="font-size: 16px; line-height: 1.65; color: #2b2218; margin: 26px 0 36px; font-family: Merriweather">Tuckr is a human-first cobotic assistant designed to eliminate the severe physical strain of hotel bed-making. Approaching this challenge through a UX lens, the project establishes a seamless parallel workflow, empowering housekeepers to clean while the device autonomously handles the heavy lifting and perimeter tucking.</p>
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:40px;">
+              <div style="position:relative;border-radius:18px;overflow:hidden;background:#f0ece4;grid-row:span 2;">
+                <img src="assets/tuckr_poster_s.png" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;min-height:180px;">
+                <img src="assets/tuckr_mvp.png" style="width:100%;height:100%;object-fit:cover;display:block;">
+                <span style="position:absolute;top:10px;left:10px;background:#F0F4EE;border-radius:10px;padding:5px 10px;font-size:12px;font-family:'Merriweather',serif;font-weight:500;">MVP of Tuckr</span>
+              </div>
+              <div style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;min-height:180px;">
+                <img src="assets/tuckr_render_s.png" style="width: 100%; height: 100%; object-fit: cover; display: block">
+                <span style="position:absolute;top:10px;left:10px;background:#F0F4EE;border-radius:10px;padding:5px 10px;font-size:12px;font-family:'Merriweather',serif;font-weight:500;">Tucking mechanism</span>
+              </div>
+            </div>
+            <h3 style="text-align: center; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: clamp(26px,4vw,36px); margin: 0 0 22px">Watch the product trailer!</h3>
+            <div style="position:relative;border-radius:32px;overflow:hidden;background:#1E4D2B;aspect-ratio:16/9;box-shadow:0 16px 40px rgba(30,77,43,0.3);">
+              <video controls="" playsinline="" poster="assets/tuckr_poster_s.png" style="width:100%;height:100%;object-fit:cover;display:block;background:#1E4D2B;">
+                <!-- add uploads/Tuckr_Trailer.mp4 to enable the trailer -->
+              </video>
+              <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(27,16,8,0.7);color:#F6F8EC;border-radius:30px;padding:6px 16px;font-family:'Space Mono',monospace;font-size:11px;pointer-events:none;">add Tuckr_Trailer.mp4 to /uploads to embed the film</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===== CPF ===== -->
+      <sc-if value="{{ isCpf }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
+          <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
+          <div style="padding:clamp(28px,5vw,48px);">
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Correspondence Redesign</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Service Design</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Frontend</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UI/UX</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">May 2026 – Present</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.004 Service Design Studio</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Figma, React</div></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;background:#EDFFF3;border:1px solid #9EE3B2;border-radius:40px;padding:7px 16px;font-family:'Space Mono',monospace;font-size:12px;margin:16px 0;">
+              <span style="width:6px;height:6px;border-radius:50%;background:#1E4D2B;display:block;animation:pulsering 2.2s ease-out infinite;"></span>
+              Currently working on: frontend development · refining UI
+            </div>
+            <p style="font-size: 16px; line-height: 1.7; color: #2b2218; margin: 0 0 24px; font-family: Merriweather">Redesigning CPF's digital correspondence system to make financial services accessible to seniors, non-English speakers, and citizens with low digital literacy by pairing a smart officer dashboard with a multilingual WhatsApp chatbot to cut average interaction times by ~30%.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">🌐</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">Multilingual Voice Chatbot</div>
+                <div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">Real-time two-way translation so users communicate naturally.</div>
+              </div>
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">🎯</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">AI Emotion Detection</div>
+                <div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">Colour-coded urgency flags so officers prioritise distressed members instantly.</div>
+              </div>
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">⚡</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">Smart Escalation</div>
+                <div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">Aggregates profiles &amp; chat history for seamless human handoffs.</div>
+              </div>
+            </div>
+            <a href="https://pulse.nathanielbuilds.cc/" target="_blank" class="cpf-preview" style="display:block;position:relative;border-radius:18px;overflow:hidden;margin-bottom:18px;text-decoration:none;box-shadow:0 8px 28px rgba(30,77,43,0.2);">
+              <iframe src="https://pulse.nathanielbuilds.cc/" style="width:100%;height:340px;border:none;display:block;pointer-events:none;" scrolling="no" loading="lazy"></iframe>
+              <div class="cpf-overlay" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 24px; background-color: #121d1585;">
+                <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:26px;color:#F6F8EC;text-align:center;line-height:1.2;">Click to explore more and try out our interactive dashboard!</span>
+                <span style="font-family:'Space Mono',monospace;font-size:12px;color:#CDFFDB;letter-spacing:1px;">pulse.nathanielbuilds.cc ↗</span>
+              </div>
+            </a>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+              <img src="assets/cpf_dash1_s.png" style="width:100%;border-radius:14px;border:1px solid rgba(30,77,43,0.2);display:block;">
+              <img src="assets/cpf_dash2_s.png" style="width:100%;border-radius:14px;border:1px solid rgba(30,77,43,0.2);display:block;">
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ===== DOSEWISE (with clickable prototype) ===== -->
+      <sc-if value="{{ isDose }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
+          <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
+          <div style="padding:clamp(28px,5vw,56px);">
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Dosewise</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">HCI</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UI/UX</span>
+              <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Figma</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">May 2026 – Present</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.005 HCI &amp; AI</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Figma, Paper Prototyping</div></div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:8px;background:#EDFFF3;border:1px solid #9EE3B2;border-radius:40px;padding:7px 16px;font-family:'Space Mono',monospace;font-size:12px;margin:16px 0;">
+              <span style="width:6px;height:6px;border-radius:50%;background:#1E4D2B;display:block;animation:pulsering 2.2s ease-out infinite;"></span>
+              Currently working on: Figma prototype · AI implementation
+            </div>
+            <p style="font-size: 16px; line-height: 1.7; color: #2b2218; margin: 0 0 24px; font-family: Merriweather">An AI-powered prescription assistant, built to bridge health-literacy gaps, featuring real-time drug interaction warnings, temporal schedule dividers, and reactive inventory tracking so patients understand exactly what they're taking, and why.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">💊</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">AI Prescription Decoder</div>
+                <div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">Translates clinical jargon and flags drug interactions so patients know exactly what they take.</div>
+              </div>
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">📋</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">Centralised Tracker</div>
+                <div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">One place to organise prescriptions from multiple doctors; no more scattered pill schedules.</div>
+              </div>
+              <div style="background:#F6F8EC;border-radius:16px;padding:16px;">
+                <div style="font-size:20px;margin-bottom:8px;">⏰</div>
+                <div style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#1E4D2B;margin-bottom:4px;">Reliable Triggers</div><div style="font-size: 13px; color: #3a3228; line-height: 1.5; font-family: Merriweather">Persistent alerts before a dose is missed or a refill runs out</div>
+                
+              </div>
+            </div>
+
+            <!-- CLICKABLE PHONE PROTOTYPE -->
+            <div style="margin-top:8px;background:#F6F8EC;border-radius:26px;padding:clamp(24px,4vw,40px);">
+              <h3 style="text-align:center;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(26px,4vw,36px);margin:0 0 6px;">Try the paper prototype</h3>
+              <p style="text-align:center;margin:0 0 22px;font-family:'Space Mono',monospace;font-size:12px;color:#3a3228;">Tap the glowing spots &amp; bottom nav to walk the flow — exactly as sketched.</p>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+                <div style="position:relative;width:min(300px,84vw);border-radius:46px;background:#141414;padding:13px;box-shadow:0 24px 55px rgba(27,16,8,0.32);">
+                  <div style="position:relative;width:100%;aspect-ratio:462/812;border-radius:34px;overflow:hidden;background:#fff;">
+                    <div style="position:absolute;inset:0;background-image:url('{{ protoBase }}');background-size:cover;background-position:top center;"></div>
+                    <sc-if value="{{ protoHint }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute;left:{{ protoHintX }};top:{{ protoHintY }};width:20px;height:20px;border-radius:50%;background:rgba(30,77,43,0.9);box-shadow:0 0 0 0 rgba(30,77,43,0.5);animation:pulsering 2s ease-out infinite;pointer-events:none;"></div>
+                    </sc-if>
+                    <sc-for list="{{ protoHotspots }}" as="hs" hint-placeholder-count="0">
+                      <button onClick="{{ hs.click }}" style="position:absolute;left:{{ hs.x }}%;top:{{ hs.y }}%;width:{{ hs.w }}%;height:{{ hs.h }}%;background:transparent;border:0;border-radius:8px;cursor:pointer;padding:0;" style-hover="background:rgba(158,227,178,0.4);"></button>
+                    </sc-for>
+                    <sc-if value="{{ protoIsModal }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ protoBackdropClick }}" style="position:absolute;inset:0;background:rgba(20,20,20,0.34);border:0;cursor:pointer;z-index:1;"></button>
+                      <div onClick="{{ protoModalClick }}" style="position:absolute;left:6%;top:30%;width:88%;cursor:pointer;z-index:2;">
+                        <img src="{{ protoModal }}" alt="confirm" style="width:100%;display:block;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+                        <div style="position:absolute;left:{{ protoModalHintX }}%;top:{{ protoModalHintY }}%;width:18px;height:18px;border-radius:50%;background:rgba(30,77,43,0.92);box-shadow:0 0 0 0 rgba(30,77,43,0.5);animation:pulsering 2s ease-out infinite;pointer-events:none;"></div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:16px;">
+                  <span style="font-family:'Space Mono',monospace;font-size:13px;color:#1E4D2B;min-width:150px;text-align:right;">{{ protoLabel }}</span>
+                  <button onClick="{{ restart }}" style="background:#1E4D2B;color:#F6F8EC;border:0;border-radius:40px;padding:9px 20px;font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;" style-hover="background:#16381F;">↺ Restart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-if>
+
+
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;heroMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;calm&quot;,&quot;balanced&quot;,&quot;lively&quot;],&quot;default&quot;:&quot;lively&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cursorParallax&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { popup: null, proto: 'home' };
+
+  motionDur(){
+    const m = this.props.heroMotion || 'balanced';
+    return ({ calm: 36, balanced: 24, lively: 14 })[m] || 24;
+  }
+
+  open(p){
+    return () => { this.setState({ popup: p, proto: 'home' }); try{ document.body.style.overflow='hidden'; }catch(e){} };
+  }
+  close(){
+    this.setState({ popup: null });
+    try{ document.body.style.overflow=''; }catch(e){}
+  }
+  goProto(to){ return () => this.setState({ proto: to }); }
+
+  componentDidMount(){
+    this._key = (e) => { if(e.key === 'Escape') this.close(); };
+    window.addEventListener('keydown', this._key);
+    if(this.props.cursorParallax !== false){
+      this._mm = (e) => {
+        const l = document.getElementById('heera-blobs');
+        if(!l) return;
+        const mx = e.clientX / window.innerWidth - 0.5;
+        const my = e.clientY / window.innerHeight - 0.5;
+        l.style.transform = 'translate(' + (mx*28).toFixed(1) + 'px,' + (my*28).toFixed(1) + 'px)';
+      };
+      window.addEventListener('mousemove', this._mm);
+    }
+  }
+  componentWillUnmount(){
+    window.removeEventListener('keydown', this._key);
+    if(this._mm) window.removeEventListener('mousemove', this._mm);
+  }
+
+  renderVals(){
+    const dur = this.motionDur();
+    const path = n => 'assets/proto/' + n + '.png';
+
+    const NAV = [
+      { x:1,  y:88, w:15, h:11, to:'home' },
+      { x:19, y:88, w:16, h:11, to:'presc_list' },
+      { x:41, y:84, w:18, h:14, to:'cal_daily' },
+      { x:60, y:88, w:15, h:11, to:'profile' },
+      { x:79, y:87, w:16, h:12, to:'settings' },
+    ];
+    // pills nav points to the EMPTY list until Metformin is added via the modal
+    NAV[1].to = 'presc_list_initial';
+    const DEF = {
+      home:        [
+        { x:82, y:29, w:13, h:9,  to:'intake' },     // ● METFORMIN circle (PRIMARY)
+        { x:82, y:14, w:13, h:9,  to:'intake' },     // LOPERAMITE missed circle
+        { x:82, y:38, w:13, h:9,  to:'intake' },     // LISINOPRIL RIGHT NOW circle
+        { x:82, y:48, w:13, h:9,  to:'intake' },     // LISINOPRIL IN 6H circle
+        { x:72, y:22, w:23, h:6,  to:'presc_list_initial' }, // View all pills
+        { x:66, y:77, w:30, h:12, to:'ai_chat' },    // robot
+      ],
+      home_taken:  [
+        { x:19, y:88, w:16, h:11, to:'presc_list_initial' }, // ● PILLS nav icon (PRIMARY glow)
+        { x:82, y:14, w:13, h:9,  to:'intake' },     // LOPERAMITE missed circle
+        { x:82, y:29, w:13, h:9,  to:'intake' },     // LISINOPRIL RIGHT NOW
+        { x:82, y:38, w:13, h:9,  to:'intake' },     // LISINOPRIL IN 6H
+        { x:72, y:22, w:23, h:6,  to:'presc_list_initial' }, // View all pills
+        { x:66, y:77, w:30, h:12, to:'ai_chat' },    // robot
+      ],
+      presc_list_initial: [
+        { x:53, y:8,  w:43, h:6,  to:'add_pill' },   // ● + ADD NEW PRESCRIPTION (PRIMARY)
+        { x:66, y:80, w:30, h:11, to:'ai_chat' },    // robot
+      ],
+      presc_list:  [
+        { x:88, y:22, w:8,  h:11, to:'presc_detail' }, // ● METFORMIN chevron/arrow (PRIMARY glow)
+        { x:62, y:8,  w:34, h:6,  to:'add_pill' },     // + ADD NEW PRESCRIPTION
+        { x:3,  y:13, w:91, h:9,  to:'presc_detail' }, // LOPERAMITE row
+        { x:3,  y:23, w:91, h:9,  to:'presc_detail' }, // METFORMIN row
+        { x:3,  y:33, w:91, h:9,  to:'presc_detail' }, // LISINOPRIL row
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },
+      ],
+      add_pill:    [
+        { x:35, y:71, w:31, h:8,  to:'medication' }, // ● ADD MEDICATION button (PRIMARY)
+        { x:48, y:0,  w:48, h:7,  to:'add_refill' }, // ADD REFILL tab
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },
+      ],
+      add_refill:  [
+        { x:35, y:71, w:31, h:8,  to:'medication' }, // ● ADD MEDICATION button (PRIMARY)
+        { x:3,  y:0,  w:45, h:7,  to:'add_pill' },   // ADD NEW PILL tab
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },
+      ],
+      presc_detail:[
+        { x:41, y:84, w:18, h:14, to:'cal_daily' },  // ● CALENDAR nav icon (PRIMARY glow — per user)
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },    // robot
+      ],
+      cal_daily:   [
+        { x:74, y:5,  w:20, h:7,  to:'cal_weekly' }, // ● WEEKLY toggle (PRIMARY)
+      ],
+      cal_weekly:  [
+        { x:60, y:88, w:15, h:11, to:'profile' },    // ● profile nav icon (PRIMARY per diagram)
+        { x:59, y:5,  w:15, h:7,  to:'cal_daily' },  // DAILY toggle
+      ],
+      profile:     [
+        { x:79, y:87, w:16, h:12, to:'settings' },   // ● settings nav icon (PRIMARY per diagram)
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },
+      ],
+      settings:    [
+        { x:66, y:79, w:30, h:11, to:'ai_chat' },    // ● robot (PRIMARY)
+      ],
+      ai_chat:     [
+        { x:89, y:0,  w:9,  h:6,  to:'home' },       // X button
+      ],
+    };
+    const MODAL = {
+      intake:     { base:'home',     modal:'modal_intake',     proceed:'home_taken', hintX:70, hintY:88, aspect:1.07 },
+      medication: { base:'add_pill', modal:'modal_medication', proceed:'presc_list', hintX:72, hintY:80, aspect:1.58 },
+    };
+    const LABEL = {
+      home:'Home', home_taken:'Home · Metformin taken ✓', presc_list_initial:'Prescriptions', presc_list:'Prescriptions · Metformin added ✓', add_pill:'Add prescription', add_refill:'Add refill',
+      presc_detail:'Medication detail', cal_daily:'Schedule · Daily', cal_weekly:'Schedule · Weekly',
+      profile:'Health profile', settings:'Settings', ai_chat:'AI assistant',
+      intake:'Confirm intake', medication:'Confirm medication',
+    };
+
+    const p = this.state.proto;
+    let protoBase, protoIsModal=false, protoModal=null, protoHotspots=[],
+        protoBackdropClick=null, protoModalClick=null,
+        protoHint=false, protoHintX='0%', protoHintY='0%',
+        protoModalHintX=58, protoModalHintY=82, protoModalAspect=1.07;
+
+    if(MODAL[p]){
+      const m = MODAL[p];
+      protoBase = path(m.base);
+      protoIsModal = true;
+      protoModal = path(m.modal);
+      protoBackdropClick = this.goProto(m.base);
+      protoModalClick = this.goProto(m.proceed);
+      protoModalHintX = m.hintX;
+      protoModalHintY = m.hintY;
+      protoModalAspect = m.aspect;
+    } else {
+      protoBase = path(p);
+      const defs = DEF[p] || [];
+      protoHotspots = defs.concat(NAV).map(z => ({ x:z.x, y:z.y, w:z.w, h:z.h, click:this.goProto(z.to) }));
+      if(defs.length){
+        const f = defs[0];
+        protoHint = true;
+        protoHintX = (f.x + f.w/2 - 2).toFixed(1) + '%';
+        protoHintY = (f.y + f.h/2 - 1.5).toFixed(1) + '%';
+      }
+    }
+
+    return {
+      isTuckr: this.state.popup === 'tuckr',
+      isCpf:   this.state.popup === 'cpf',
+      isDose:  this.state.popup === 'dose',
+      anyPopup: !!this.state.popup,
+      openTuckr: this.open('tuckr'),
+      openCpf:   this.open('cpf'),
+      openDose:  this.open('dose'),
+      close: () => this.close(),
+
+      blobA: 'float1 ' + dur + 's ease-in-out infinite',
+      blobB: 'float2 ' + (dur*1.3).toFixed(0) + 's ease-in-out infinite',
+      blobC: 'float3 ' + (dur*0.85).toFixed(0) + 's ease-in-out infinite',
+      blobD: 'float4 ' + (dur*1.15).toFixed(0) + 's ease-in-out infinite',
+
+      protoBase, protoIsModal, protoModal, protoHotspots,
+      protoBackdropClick, protoModalClick,
+      protoModalHintX, protoModalHintY, protoModalAspect,
+      protoHint, protoHintX, protoHintY,
+      restart: this.goProto('home'),
+      protoLabel: LABEL[p] || '',
+    };
+  }
+}
+</script>
+</body>
+</html>

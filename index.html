@@ -28,15 +28,19 @@
   .cpf-preview:hover .cpf-overlay{background-color:rgba(13,22,15,0.22) !important;}
   @keyframes wave{0%,100%{transform:rotate(0deg)}20%{transform:rotate(20deg)}40%{transform:rotate(-8deg)}60%{transform:rotate(20deg)}80%{transform:rotate(-4deg)}}
   @keyframes popin{0%{transform:translateY(24px) scale(.985);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+  html{overflow-x:hidden;}
+  @media (max-width:640px){
+    .about-grid{grid-template-columns:1fr !important;justify-items:center;text-align:center;}
+  }
 </style>
 </helmet>
 
 <div style="font-family:'Merriweather',serif;color:#1B1008;background:#F6F8EC;overflow-x:hidden;">
 
   <!-- NAV -->
-  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 10px clamp(20px,5vw,56px); background: rgba(246,248,236,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 1px 24px rgba(27,16,8,0.08)">
-    <a href="#top" style="font-family:'Zilla Slab',serif;font-weight:700;font-size:28px;letter-spacing:2px;color:#1E4D2B;text-decoration:none;">HEERA</a>
-    <div style="display:flex;gap:clamp(16px,2.5vw,34px);align-items:center;font-family:'Space Mono',monospace;font-size:13px;">
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; flex-wrap: wrap; row-gap: 6px; justify-content: space-between; align-items: center; padding: 10px clamp(16px,5vw,56px); background: rgba(246,248,236,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 1px 24px rgba(27,16,8,0.08)">
+    <a href="#top" style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(22px,4vw,28px);letter-spacing:2px;color:#1E4D2B;text-decoration:none;">HEERA</a>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,2.5vw,34px);align-items:center;font-family:'Space Mono',monospace;font-size:13px;">
       <a href="#about" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">About</a>
       <a href="#projects" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Projects</a>
       <a href="#contact" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Contact</a>
@@ -45,7 +49,7 @@
   </div>
 
   <!-- HERO -->
-  <div id="top" style="position: relative; overflow: hidden; min-height: auto; display: flex; flex-direction: column; justify-content: center; padding: 200px 0 200px; background: radial-gradient(ellipse at 15% 60%, rgba(205,255,219,0.7) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(158,227,178,0.5) 0%, transparent 50%), #F6F8EC; height: 402px">
+  <div id="top" style="position: relative; overflow: hidden; min-height: auto; display: flex; flex-direction: column; justify-content: center; padding: clamp(120px,22vw,200px) 0 clamp(80px,16vw,200px); background: radial-gradient(ellipse at 15% 60%, rgba(205,255,219,0.7) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(158,227,178,0.5) 0%, transparent 50%), #F6F8EC;">
     <div id="heera-blobs" style="position:absolute;inset:-12%;z-index:0;pointer-events:none;transition:transform .35s ease-out;">
       <div style="position:absolute;top:-2%;left:6%;width:min(70vw,680px);height:min(70vw,680px);border-radius:50%;background:radial-gradient(circle at 50% 50%, #CDFFDB 0%, rgba(205,255,219,0) 68%);filter:blur(28px);animation:{{ blobA }};"></div>
       <div style="position: absolute; top: 113px; width: min(72vw,720px); height: min(72vw,720px); border-radius: 50%; background: radial-gradient(circle at 50% 50%, #9EE3B2 0%, rgba(158,227,178,0) 66%); filter: blur(32px); animation: {{ blobB }}; left: 741px"></div>
@@ -53,13 +57,13 @@
       <div style="position:absolute;top:26%;left:40%;width:min(44vw,440px);height:min(44vw,440px);border-radius:50%;background:radial-gradient(circle at 50% 50%, #D9F8C4 0%, rgba(215,254,196,0) 66%);filter:blur(30px);animation:{{ blobD }};"></div>
     </div>
     
-    <div style="position: relative; z-index: 1; width: 1201px; max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; animation: fadein .9s ease both; top: -17px; height: 347px; left: -49px">
+    <div style="position: relative; z-index: 1; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,5vw,48px); box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; animation: fadein .9s ease both;">
       <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border-radius:40px;padding:7px 18px;border:1px solid rgba(30,77,43,0.18);">
         <span style="width:8px;height:8px;border-radius:50%;background:#1E4D2B;display:block;box-shadow:0 0 0 0 rgba(30,77,43,0.5);animation:pulsering 2.4s ease-out infinite;"></span>
         <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;color:#1E4D2B;">Available from Aug 2026</span>
       </div>
       <span style="font-family:'Space Mono',monospace;font-size:clamp(11px,1vw,13px);letter-spacing:4px;color:#56675B;">UI/UX DESIGNER IN THE MAKING</span>
-      <h1 style="margin: 0; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: clamp(52px,9vw,128px); line-height: 0.96; color: #1B1008; width: 1002px; height: 105px">Hi, I am <span style="color: rgb(30, 77, 43);">Heera !</span></h1>
+      <h1 style="margin: 0; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: clamp(40px,9vw,128px); line-height: 0.96; color: #1B1008; max-width: 100%;">Hi, I am <span style="color: rgb(30, 77, 43);">Heera !</span></h1>
       <p style="margin: 0; font-family: 'Space Mono',monospace; font-size: clamp(13px,1.2vw,16px); color: #3a3228; line-height: 1.65; max-width: 600px; padding-top: 13px; padding-bottom: 13px">Welcome to my portfolio, a place where I showcase my latest work and document my journey in human-centered design.</p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; padding-top: 0px; padding-bottom: 0px">
         <a href="#projects" style="background: #1E4D2B; color: #F6F8EC; text-decoration: none; border-radius: 44px; padding: 12px 28px; font-size: 13px; box-shadow: 0 8px 22px rgba(30,77,43,0.28)" style-hover="background:#16381F;transform:translateY(-2px);">View my work</a>
@@ -76,7 +80,7 @@
       <span style="flex:1;height:1px;background:rgba(30,77,43,0.3);"></span>
     </div>
 
-    <div style="display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:clamp(20px,4vw,48px);align-items:center;">
+    <div class="about-grid" style="display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:clamp(20px,4vw,48px);align-items:center;">
       <div style="justify-self:center;position:relative;">
         <div style="position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #CDFFDB, #9EE3B2); filter: blur(8px); opacity: 0.28"></div>
         <img src="assets/profile.jpg" alt="Suheera Banu" style="position: relative; width: clamp(150px,16vw,210px); height: clamp(150px,16vw,210px); border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 5px solid #F6F8EC; border-color: #fdfff5; image-rendering: -webkit-optimize-contrast;">
@@ -101,8 +105,8 @@
         <span style="background:#F6F8EC;border-radius:40px;padding:4px 12px;font-size:12px;font-style:italic;">GPA 4.4 / 5.0</span>
         <span style="background:#F6F8EC;border-radius:40px;padding:4px 12px;font-size:12px;font-style:italic;">Shopee–SUTD Scholarship</span>
       </div>
-    </div><div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 14px; margin-right: -242px">
-      <div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06); width: 625px; height: 71px">
+    </div><div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 14px;">
+      <div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06);">
         <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:12px;color:#1B1008;">DESIGN &amp; 3D</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
           <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/figma.png" style="width:18px;height:18px;object-fit:contain;">Figma</span>
@@ -111,7 +115,7 @@
           <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/fusion.png" style="width:18px;height:18px;object-fit:contain;">Fusion 360</span>
           <span style="display:inline-flex;align-items:center;gap:7px;border:1.5px solid rgba(30,77,43,0.3);border-radius:40px;padding:6px 14px;font-size:13px;" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/blender.png" style="width:18px;height:18px;object-fit:contain;">Blender</span>
         </div>
-      </div><div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06); width: 377px; height: 71px">
+      </div><div style="background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 14px rgba(27,16,8,0.06);">
         <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:12px;color:#1B1008;">LANGUAGES</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
           <span style="display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid rgba(30,77,43,0.3); border-radius: 40px; padding: 6px 14px; font-size: 13px" style-hover="background:#9EE3B2;border-color:#9EE3B2;"><img src="assets/icons/python.png" style="width:18px;height:18px;object-fit:contain;">Python</span>
@@ -186,7 +190,7 @@
       <span style="flex:1;height:1px;background:rgba(30,77,43,0.3);"></span>
     </div>
       
-      <div style="box-sizing: border-box; gap: 12px"><h2 style="margin: 0; text-align: center; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: 60px; line-height: 1.6; color: #1B1008">Let's work together!</h2>
+      <div style="box-sizing: border-box; gap: 12px"><h2 style="margin: 0; text-align: center; font-family: 'Zilla Slab',serif; font-weight: 700; font-size: clamp(32px,7vw,60px); line-height: 1.3; color: #1B1008">Let's work together!</h2>
       
       <div style="max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px">
         <a href="mailto:suheera01@gmail.com" style="display:flex;align-items:center;gap:12px;border:1.4px solid rgba(30,77,43,0.3);border-radius:10px;padding:10px 16px;color:#1B1008;text-decoration:none;font-size:14px;transition:all .2s ease;" style-hover="background:#1E4D2B;color:#F6F8EC;border-color:#1E4D2B;">

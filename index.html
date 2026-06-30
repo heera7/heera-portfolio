@@ -32,24 +32,56 @@
   @media (max-width:640px){
     .about-grid{grid-template-columns:1fr !important;justify-items:center;text-align:center;}
   }
+  .popup-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 24px;}
+  @media (max-width:560px){
+    .popup-meta{grid-template-columns:1fr;gap:14px;}
+  }
+  .tuckr-gallery{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:40px;}
+  .tuckr-poster{grid-row:span 2;}
+  .tuckr-shot{min-height:180px;}
+  .tuckr-gallery img{width:100%;height:100%;object-fit:cover;display:block;}
+  @media (max-width:640px){
+    .tuckr-gallery{grid-template-columns:1fr;}
+    .tuckr-poster{grid-row:auto;}
+    .tuckr-shot{min-height:0;}
+    .tuckr-gallery img{height:auto;object-fit:contain;}
+  }
+  .nav-burger{display:none;}
+  @media (max-width:700px){
+    .nav-links-desktop{display:none !important;}
+    .nav-burger{display:flex;align-items:center;justify-content:center;}
+  }
 </style>
 </helmet>
 
 <div style="font-family:'Merriweather',serif;color:#1B1008;background:#F6F8EC;overflow-x:hidden;">
 
   <!-- NAV -->
-  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; flex-wrap: wrap; row-gap: 6px; justify-content: space-between; align-items: center; padding: 10px clamp(16px,5vw,56px); background: rgba(246,248,236,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 1px 24px rgba(27,16,8,0.08)">
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 10px clamp(16px,5vw,56px); background: rgba(246,248,236,0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 1px 24px rgba(27,16,8,0.08)">
     <a href="#top" style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(22px,4vw,28px);letter-spacing:2px;color:#1E4D2B;text-decoration:none;">HEERA</a>
-    <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,2.5vw,34px);align-items:center;font-family:'Space Mono',monospace;font-size:13px;">
+    <div class="nav-links-desktop" style="display:flex;flex-wrap:wrap;gap:clamp(12px,2.5vw,34px);align-items:center;font-family:'Space Mono',monospace;font-size:13px;">
       <a href="#about" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">About</a>
       <a href="#projects" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Projects</a>
       <a href="#contact" style="color:#1B1008;text-decoration:none;" style-hover="color:#1E4D2B;">Contact</a>
       <a href="uploads/Suheera_Banu_Resume.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1E4D2B;color:#F6F8EC;text-decoration:none;border-radius:40px;padding:8px 18px;font-size:13px;" style-hover="background:#16381F;">Resume ↗</a>
     </div>
+    <button class="nav-burger" onClick="{{ toggleNav }}" aria-label="Toggle menu" style="background:rgba(30,77,43,0.08);border:0;border-radius:10px;width:40px;height:40px;cursor:pointer;color:#1E4D2B;font-size:18px;">
+      <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">✕</sc-if>
+      <sc-if value="{{ !navOpen }}" hint-placeholder-val="{{ true }}">☰</sc-if>
+    </button>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ closeNav }}" style="position:fixed;inset:0;background:transparent;border:0;cursor:default;z-index:55;"></button>
+      <div style="position:absolute;top:100%;right:16px;margin-top:10px;background:#F6F8EC;border-radius:18px;box-shadow:0 16px 36px rgba(27,16,8,0.2);padding:12px;display:flex;flex-direction:column;gap:2px;min-width:190px;font-family:'Space Mono',monospace;font-size:14px;z-index:60;">
+        <a href="#about" onClick="{{ closeNav }}" style="padding:10px 12px;border-radius:10px;color:#1B1008;text-decoration:none;" style-hover="background:#EFF4EE;color:#1E4D2B;">About</a>
+        <a href="#projects" onClick="{{ closeNav }}" style="padding:10px 12px;border-radius:10px;color:#1B1008;text-decoration:none;" style-hover="background:#EFF4EE;color:#1E4D2B;">Projects</a>
+        <a href="#contact" onClick="{{ closeNav }}" style="padding:10px 12px;border-radius:10px;color:#1B1008;text-decoration:none;" style-hover="background:#EFF4EE;color:#1E4D2B;">Contact</a>
+        <a href="uploads/Suheera_Banu_Resume.pdf" target="_blank" onClick="{{ closeNav }}" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;background:#1E4D2B;color:#F6F8EC;text-decoration:none;border-radius:40px;padding:10px 18px;font-size:13px;" style-hover="background:#16381F;">Resume ↗</a>
+      </div>
+    </sc-if>
   </div>
 
   <!-- HERO -->
-  <div id="top" style="position: relative; overflow: hidden; min-height: auto; display: flex; flex-direction: column; justify-content: center; padding: clamp(120px,22vw,200px) 0 clamp(80px,16vw,200px); background: radial-gradient(ellipse at 15% 60%, rgba(205,255,219,0.7) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(158,227,178,0.5) 0%, transparent 50%), #F6F8EC;">
+  <div id="top" style="position: relative; overflow: hidden; box-sizing: border-box; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: clamp(90px,14vh,140px) 0; background: radial-gradient(ellipse at 15% 60%, rgba(205,255,219,0.7) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(158,227,178,0.5) 0%, transparent 50%), #F6F8EC;">
     <div id="heera-blobs" style="position:absolute;inset:-12%;z-index:0;pointer-events:none;transition:transform .35s ease-out;">
       <div style="position:absolute;top:-2%;left:6%;width:min(70vw,680px);height:min(70vw,680px);border-radius:50%;background:radial-gradient(circle at 50% 50%, #CDFFDB 0%, rgba(205,255,219,0) 68%);filter:blur(28px);animation:{{ blobA }};"></div>
       <div style="position: absolute; top: 113px; width: min(72vw,720px); height: min(72vw,720px); border-radius: 50%; background: radial-gradient(circle at 50% 50%, #9EE3B2 0%, rgba(158,227,178,0) 66%); filter: blur(32px); animation: {{ blobB }}; left: 741px"></div>
@@ -95,9 +127,9 @@
     
 
     <!-- skills -->
-    <div style="margin-top: 36px; background: #BFDCC7; border-radius: 22px; padding: clamp(10px,2.5vw,28px); display: flex; flex-direction:column; gap:8px;">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;">
-        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(18px,1.8vw,22px);line-height:1.12;color:#1B1008;">Bachelor of Science in Design &amp; Artificial Intelligence (DAI)</div>
+    <div style="margin-top: 36px; background: #BFDCC7; border-radius: 22px; padding: clamp(18px,5vw,28px); display: flex; flex-direction:column; gap:12px;">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;">
+        <div style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(18px,1.8vw,22px);line-height:1.3;color:#1B1008;">Bachelor of Science in Design &amp; Artificial Intelligence (DAI)</div>
         <span style="font-family:'Space Mono',monospace;font-size:14px;color:#1E4D2B;white-space:nowrap;flex-shrink:0;">2024 — 2028</span>
       </div>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
@@ -225,29 +257,29 @@
         <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
           <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
           <div style="padding:clamp(28px,5vw,56px);">
-            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Tuckr</h2>
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(30px,9vw,80px);line-height:1.02;overflow-wrap:break-word;max-width:calc(100% - 30px);">Tuckr</h2>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Product Design</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UX Research</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">3D Modelling</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Hardware Prototyping</span>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+            <div class="popup-meta" style="padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">Jan – Apr 2026</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.003 Product Design Studio</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Blender, Fusion 360, Canva</div></div>
             </div>
             <p style="font-size: 16px; line-height: 1.65; color: #2b2218; margin: 26px 0 36px; font-family: Merriweather">Tuckr is a human-first cobotic assistant designed to eliminate the severe physical strain of hotel bed-making. Approaching this challenge through a UX lens, the project establishes a seamless parallel workflow, empowering housekeepers to clean while the device autonomously handles the heavy lifting and perimeter tucking.</p>
-            <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:40px;">
-              <div style="position:relative;border-radius:18px;overflow:hidden;background:#f0ece4;grid-row:span 2;">
-                <img src="assets/tuckr_poster_s.png" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div class="tuckr-gallery">
+              <div class="tuckr-poster" style="position:relative;border-radius:18px;overflow:hidden;background:#f0ece4;">
+                <img src="assets/tuckr_poster_s.png">
               </div>
-              <div style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;min-height:180px;">
-                <img src="assets/tuckr_mvp.png" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div class="tuckr-shot" style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;">
+                <img src="assets/tuckr_mvp.png">
                 <span style="position:absolute;top:10px;left:10px;background:#F0F4EE;border-radius:10px;padding:5px 10px;font-size:12px;font-family:'Merriweather',serif;font-weight:500;">MVP of Tuckr</span>
               </div>
-              <div style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;min-height:180px;">
-                <img src="assets/tuckr_render_s.png" style="width: 100%; height: 100%; object-fit: cover; display: block">
+              <div class="tuckr-shot" style="position:relative;border-radius:18px;overflow:hidden;background:#e9ece1;">
+                <img src="assets/tuckr_render_s.png">
                 <span style="position:absolute;top:10px;left:10px;background:#F0F4EE;border-radius:10px;padding:5px 10px;font-size:12px;font-family:'Merriweather',serif;font-weight:500;">Tucking mechanism</span>
               </div>
             </div>
@@ -266,13 +298,13 @@
         <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
           <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
           <div style="padding:clamp(28px,5vw,48px);">
-            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Correspondence Redesign</h2>
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(30px,9vw,80px);line-height:1.02;overflow-wrap:break-word;max-width:calc(100% - 30px);">Correspondence Redesign</h2>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Service Design</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Frontend</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UI/UX</span>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+            <div class="popup-meta" style="padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">May 2026 – Present</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.004 Service Design Studio</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Figma, React</div></div>
@@ -319,13 +351,13 @@
         <div style="position:relative;z-index:1;width:min(900px,100%);background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);animation:popin .4s ease;">
           <button onClick="{{ close }}" style="position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:42px;height:42px;border-radius:50%;border:0;background:#F6F8EC;color:#1B1008;font-size:20px;cursor:pointer;z-index:5;box-shadow:0 4px 12px rgba(0,0,0,0.12);" style-hover="background:#9EE3B2;">✕</button>
           <div style="padding:clamp(28px,5vw,56px);">
-            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(46px,8vw,80px);line-height:0.95;">Dosewise</h2>
+            <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(30px,9vw,80px);line-height:1.02;overflow-wrap:break-word;max-width:calc(100% - 30px);">Dosewise</h2>
             <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;">
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">HCI</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">UI/UX</span>
               <span style="background:#EFF4EE;border-radius:40px;padding:5px 14px;font-size:12px;font-family:'Space Mono',monospace;color:#1E4D2B;">Figma</span>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:10px 40px;padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
+            <div class="popup-meta" style="padding-bottom:20px;border-bottom:1px solid rgba(27,16,8,0.10);">
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TIMELINE</div><div style="font-size:15px;margin-top:3px;">May 2026 – Present</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">MODULE</div><div style="font-size:15px;margin-top:3px;">60.005 HCI &amp; AI</div></div>
               <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#56675B;">TOOLS</div><div style="font-size:15px;margin-top:3px;">Figma, Paper Prototyping</div></div>
@@ -393,7 +425,7 @@
 </x-dc>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;heroMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;calm&quot;,&quot;balanced&quot;,&quot;lively&quot;],&quot;default&quot;:&quot;lively&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cursorParallax&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { popup: null, proto: 'home' };
+  state = { popup: null, proto: 'home', navOpen: false };
 
   motionDur(){
     const m = this.props.heroMotion || 'balanced';
@@ -409,8 +441,11 @@ class Component extends DCLogic {
   }
   goProto(to){ return () => this.setState({ proto: to }); }
 
+  toggleNav(){ this.setState({ navOpen: !this.state.navOpen }); }
+  closeNav(){ this.setState({ navOpen: false }); }
+
   componentDidMount(){
-    this._key = (e) => { if(e.key === 'Escape') this.close(); };
+    this._key = (e) => { if(e.key === 'Escape'){ this.close(); this.closeNav(); } };
     window.addEventListener('keydown', this._key);
     if(this.props.cursorParallax !== false){
       this._mm = (e) => {
@@ -550,6 +585,10 @@ class Component extends DCLogic {
       openCpf:   this.open('cpf'),
       openDose:  this.open('dose'),
       close: () => this.close(),
+
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.toggleNav(),
+      closeNav: () => this.closeNav(),
 
       blobA: 'float1 ' + dur + 's ease-in-out infinite',
       blobB: 'float2 ' + (dur*1.3).toFixed(0) + 's ease-in-out infinite',
